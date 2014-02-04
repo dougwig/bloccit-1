@@ -1,3 +1,5 @@
-<h1><%= @posts.title %></h1>
-<p><%= @posts.body %></p>
+<h1><%= @post.title %></h1>
 
+<%= link_to "Edit", edit_post_path(@post), class: 'btn btn-mini' %>
+
+<p><%= @post.body %></p>
