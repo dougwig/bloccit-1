@@ -12,6 +12,7 @@ class PostsController < ApplicationController
   end
 
   def create
+    @post = current_user.posts.build(params[:post])
     puts "POSTS CREATE = #{params.inspect}"
     @post = Post.new(params[:post])
     #raise # this will short-circuit the method
