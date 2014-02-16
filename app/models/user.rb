@@ -5,9 +5,13 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :name
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :avatar
   # attr_accessible :title, :body
   has_many :posts
+  # Carrierwave provides a method named mount_uploader which gives an attribute 
+  # additional functionality to assist in uploading. 
+  # Declare mount_uploader
+  mount_uploader :avatar, AvatarUploader
 
 
 

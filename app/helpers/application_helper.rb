@@ -15,3 +15,11 @@ module ApplicationHelper
   end
 
 end
+
+
+# def control_group_tag(errors, &block)
+#     if errors.any?
+# This:
+#       "<div class='control-group error'>#{capture yield}</div>"
+# equivalent to:
+#       content_tag :div, capture(&block), class: 'control-group error'
