@@ -21,6 +21,14 @@
       <%= f.text_area :body, rows: 8 %>
     </div>
   <% end %>
+<!-- add image -->
+  <div class="control-group">
+    <%= f.label :image, class: 'control-label' %>
+    <div class="controls"> 
+      <%= f.file_field :image %>
+    </div>
+  </div>
+
   <div class="control-group">
     <div class="controls">
       <%= f.submit "Save", class: 'btn' %>
