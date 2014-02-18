@@ -24,10 +24,11 @@ rand(4..10).times do
   # The `skip_confirmation!` method sets the confirmation date
   # to avoid sending an email. The `save` method updates the database.
 
-  rand(5..12).times do
+  rand(5..15).times do
     topic = topics.first # getting the first topic here
     p = u.posts.create(
-      title: Faker::Lorem.words(rand(1..10)).join(" "), 
+      topic: topic,
+      title: Faker::Lorem.words(rand(3..10)).join(" "), 
       body: Faker::Lorem.paragraphs(rand(1..4)).join("\n"))
     # set the created_at to a time within the past year
     p.update_attribute(:created_at, Time.now - rand(600..31536000))
@@ -69,5 +70,7 @@ u.save
 
 puts "Seed finished"
 puts "#{User.count} users created"
+puts "#{Topic.count} topics created"
 puts "#{Post.count} posts created"
 puts "#{Comment.count} comments created"
+

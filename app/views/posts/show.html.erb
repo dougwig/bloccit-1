@@ -9,6 +9,9 @@
    
     <p><%= markdown @post.body %></p>
     <p><%= image_tag(@post.image.url) if @post.image? %></p>
+    <p>Comments:</p>
+    <p><%= @post.comments.first.body %></p>
+    
 
   </div>
   <div class="span4">
