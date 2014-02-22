@@ -9,7 +9,6 @@ class Ability
         # if a member, they can manage their own posts 
     # (or create new ones)
     if user.role? :member
-      puts "ABILITY yes, we think this is a user!"
       can :manage, Post, :user_id => user.id
       can :manage, Comment, :user_id => user.id
     end

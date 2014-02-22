@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :avatar
   # attr_accessible :title, :body
   has_many :posts
+  has_many :comments
   # Carrierwave provides a method named mount_uploader which gives an attribute 
   # additional functionality to assist in uploading. 
   # Declare mount_uploader

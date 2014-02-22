@@ -19,13 +19,16 @@
       <%= link_to "Edit", edit_topic_post_path(@topic,@post), class: 'btn btn-large btn-block' %>
     <% end %>
     <br/>
-    <%= render partial: 'form', locals: { topic: @topic, post: @post } %>
+    <% if can? :create, @post %>
+      <%= render partial: 'form', locals: { topic: @topic, post: @post } %>
+    <% end %>
   </div>
 
 </div>
 
-
-<%= render partial: 'comments/new', locals: { topic: @topic, post: @post, comment: @comment } %>
+<% if can? :create, @comment %>
+  <%= render partial: 'comments/new', locals: { topic: @topic, post: @post, comment: @comment } %>
+<% end %>
 <!-- def render(opts={})
   opts[:partial] == 'comments'
   view = find_view_on_disk(opts[:partial])

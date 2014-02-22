@@ -2,8 +2,22 @@ class PostsController < ApplicationController
 
 
   def show
-    @post = Post.find(params[:id])
+    # @post = Post.find(params[:id])
+    # @topic = Topic.find(params[:topic_id])
+    # @comment = Comment.find(params[:post_id])
+
+    # POST SHOW
     @topic = Topic.find(params[:topic_id])
+    @post = @topic.posts.where(id: params[:id]).first
+
+    # COMMENTS INDEX (array)
+    @comments = @post.comments
+
+    #puts "POSTS SHOW COMMENTS = #{@comments.inspect}"
+
+    # COMMENT NEW
+    @comment = Comment.new
+
   end
 
   def new
