@@ -9,14 +9,26 @@
    
     <p><%= markdown @post.body %></p>
     <p><%= image_tag(@post.image.url) if @post.image? %></p>
-    <p>Comments:</p>
-    <p><%= @post.comments.first.body %></p>
     
-
+    <%= puts "VIEW CHECK 1: @comments = #{@comments.inspect}".html_safe %>
+    <%= render partial: 'comment', collection: @comments %>
+    <%#= render(partial: 'comments', locals: { comments: @comments) } %>
   </div>
   <div class="span4">
     <% if can? :edit, @post %>
       <%= link_to "Edit", edit_topic_post_path(@topic,@post), class: 'btn btn-large btn-block' %>
     <% end %>
+    <br/>
+    <%= render partial: 'form', locals: { topic: @topic, post: @post } %>
   </div>
+
 </div>
+
+
+<%= render partial: 'comments/new', locals: { topic: @topic, post: @post, comment: @comment } %>
+<!-- def render(opts={})
+  opts[:partial] == 'comments'
+  view = find_view_on_disk(opts[:partial])
+end
+
+foo(bar:2, baz: 3, foo: 4) -->
