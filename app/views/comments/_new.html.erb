@@ -1,4 +1,5 @@
 <%#= form_for comment, html: { class: 'form-horizontal' } do |f| %>
+
 <%= form_for [topic, post, comment] do |f| %>
   <% if comment.errors.any? %>
     <div class="alert alert-block">
@@ -12,14 +13,16 @@
   <% end %>
   <br/>
   <%= control_group_tag(comment.errors[:body]) do %>
-    <%= f.label :body, class: 'control-label' %>
+    <%= f.label :body, "New Comment", class: 'control-label' %>
     <div class="controls">
       <%= f.text_area :body, rows: 5 %>
     </div>
   <% end %>
   <div class="control-group">
     <div class="controls">
-      <%= f.submit "Save", class: 'btn' %>
+      <%= f.submit "Add", class: 'btn' %>
     </div>
   </div>
 <% end %>
+
+

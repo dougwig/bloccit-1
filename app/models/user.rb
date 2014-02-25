@@ -26,8 +26,13 @@ class User < ActiveRecord::Base
   def set_member
     self.role = 'member'
     
+
   end
 
   before_create :set_member
 
 end
+
+
+
+
