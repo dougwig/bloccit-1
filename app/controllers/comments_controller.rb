@@ -1,22 +1,18 @@
 class CommentsController < ApplicationController
-  def index
-  end
-
-  def show
-  end
-
-  def new
-  end
 
   def create
-    @topic = Topic.find(params[:topic_id])
-    @post = Post.find(params[:post_id])
+    # @topic = Topic.find(params[:topic_id])
+    # @post = Post.find(params[:post_id])
     #@comment = @post.comments.build(params[:comment])
     #@comment.user = current_user
     
     #from solution
-    @comment = current_user.comments.build(params[:comment])
-    @comment.post = @post
+    # @comments = @post.comments
+
+
+    # @comment = current_user.comments.build(params[:comment])
+    # @comment.post = @post
+    # @new_comment = Comment.new
 
     authorize! :create, @comment, message: "You need to be signed up to do that."
     if @comment.save

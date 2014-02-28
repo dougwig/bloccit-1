@@ -1,7 +1,8 @@
-<h1><%= markdown @post.title %></h1>
 
 <div class="row">
   <div class="span8">
+    <%= render partial: 'votes/voter', locals: { topic: @topic, post: @post } %>
+    <h1><%= markdown @post.title %></h1>
     
       <%= image_tag(@post.user.avatar.tiny.url) if @post.user.avatar? %>
       submitted <%= time_ago_in_words(@post.created_at) %> ago by 
@@ -10,10 +11,10 @@
     <p><%= markdown @post.body %></p>
     <p><%= image_tag(@post.image.url) if @post.image? %></p>
     
-    <%= puts "VIEW CHECK 1: @comments = #{@comments.inspect}".html_safe %>
+    <%= puts "VIEW CHECK 1: @comments = #{@comments.inspect}".html_safe %> 
 
     <%= render partial: 'comment', collection: @comments %>
-    <%#= render(partial: 'comments', locals: { comments: @comments) } %>
+ 
   </div>
   <div class="span4">
     <% if can? :edit, @post %>
@@ -22,6 +23,13 @@
     <% if can? :destroy, @post %>
       <%= link_to "Delete Post", [@topic, @post], method: :delete, class: 'btn btn-large btn-block btn-danger', confirm: 'Are you sure you want to delete this post?' %>
     <% end %> 
+    <div>
+      <h3><%= pluralize(@post.points, 'point') %></h3>
+      <small>
+        <%= pluralize(@post.up_votes, 'up vote') %>, 
+        <%= pluralize(@post.down_votes, 'down vote') %>
+      </small>
+    </div>
     <br/>
     <% if can? :create, @post %>
       <%= render partial: 'form', locals: { topic: @topic, post: @post } %>
