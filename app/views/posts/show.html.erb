@@ -30,6 +30,8 @@
         <%= pluralize(@post.down_votes, 'down vote') %>
       </small>
     </div>
+    <%= puts "VIEW CHECK 2: @post = #{@post.inspect}".html_safe %> 
+    <%= render partial: 'favorites/favorite', locals: { topic: @topic, post: @post } %>
     <br/>
     <% if can? :create, @post %>
       <%= render partial: 'form', locals: { topic: @topic, post: @post } %>
