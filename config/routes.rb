@@ -1,6 +1,6 @@
 Bloccit::Application.routes.draw do
-
-  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
+# for allowing Facebook authentication and not require password for changes
+  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks', registrations: 'users/registrations' }
 
   resources :topics do 
 
