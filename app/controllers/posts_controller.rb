@@ -5,6 +5,7 @@ class PostsController < ApplicationController
 
     # POST SHOW
     @topic = Topic.find(params[:topic_id])
+    authorize! :read, @topic, message: "You need to be signed-in to do that."
     @post = @topic.posts.where(id: params[:id]).first
 
     # COMMENTS INDEX (array)

@@ -13,6 +13,7 @@ class Ability
       can :manage, Comment, :user_id => user.id
       can :create, Vote
       can :manage, Favorite, user_id: user.id
+      can :read, Topic
     end
 
     # Moderators can delete any post
@@ -52,7 +53,8 @@ class Ability
     #
     # See the wiki for details:
     # https://github.com/ryanb/cancan/wiki/Defining-Abilities
-    can :read, :all
+    can :read, Topic, public: true
+    can :read, Post
     puts "ABILITY, end"
   end
 end

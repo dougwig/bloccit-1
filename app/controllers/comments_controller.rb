@@ -1,10 +1,10 @@
 class CommentsController < ApplicationController
 
   def create
-    # @topic = Topic.find(params[:topic_id])
-    # @post = Post.find(params[:post_id])
-    #@comment = @post.comments.build(params[:comment])
-    #@comment.user = current_user
+    @topic = Topic.find(params[:topic_id])
+    @post = Post.find(params[:post_id])
+    @comment = @post.comments.build(params[:comment])
+    @comment.user = current_user
     
     #from solution
     # @comments = @post.comments
@@ -19,7 +19,7 @@ class CommentsController < ApplicationController
       redirect_to [@topic, @post], notice: "Comment was saved successfully"
     else
       flash[:error] = "There was an error saving the comment. Please try again."
-      render :new
+      redirect_to [@topic, @post]
     end
   end
 
