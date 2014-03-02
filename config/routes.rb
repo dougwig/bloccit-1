@@ -2,6 +2,8 @@ Bloccit::Application.routes.draw do
 # for allowing Facebook authentication and not require password for changes
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks', registrations: 'users/registrations' }
 
+  resources :users, only: [:show] #create a route for users#show
+
   resources :topics do 
 
     resources :posts, except: [:index] do
