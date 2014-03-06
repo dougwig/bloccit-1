@@ -25,9 +25,11 @@
     </ul>
     <div class="tab-content">
       <div class="tab-pane active" id="posts">
+        <%= puts "VIEW CHECK POST: @post = #{@post.inspect}".html_safe %> 
         <%= render @posts %>
       </div>
       <div class="tab-pane" id="comments">
+        <%= puts "VIEW CHECK COMMENT: @comment = #{@comment.inspect}".html_safe %> 
         <%= render @user.comments %>
       </div>
     </div>
