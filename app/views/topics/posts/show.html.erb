@@ -13,7 +13,11 @@
     
     <%= puts "VIEW CHECK 1: @comments = #{@comments.inspect}".html_safe %> 
 
-    <%= render partial: 'posts/comment', collection: @comments %>
+    <%#= render 'comments/comment', collection: @comments %>
+    <% @comments.each do |comment| %>
+      <% puts "COMMENT IN LOOP: #{comment.inspect}" %>
+      <%= render 'comments/comment', locals: { comment: comment, foobar: 42 } %>
+    <% end %>
  
   </div>
   <div class="span4">
