@@ -15,6 +15,8 @@ end
 
 group :development, :test do
   gem 'rspec-rails'
+  gem 'factory_girl_rails', '~> 4.0'
+  gem 'database_cleaner'
 end
 
 
@@ -41,7 +43,6 @@ gem 'fog'
 gem 'figaro'
 gem 'will_paginate', '~> 3.0'
 gem 'omniauth-facebook'
-gem 'factory_girl'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
